@@ -3,93 +3,41 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title id="page-title">CommPilot Demo</title>
+  <title>CommPilot — Intelligent Communication for Organizations That Serve People</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
-      --cream: #FAF7F2;
-      --warm-white: #FFFFFF;
-      --ink: #1C1A17;
-      --ink-light: #4A4640;
-      --amber: #C8773A;
-      --amber-light: #E8956A;
-      --amber-pale: #FDF0E6;
-      --sage: #4A6741;
-      --sage-light: #EBF2EA;
-      --slate: #3A4A5C;
-      --border: #E8E2D9;
-      --shadow: 0 4px 24px rgba(28,26,23,0.08);
-      --shadow-lg: 0 12px 48px rgba(28,26,23,0.12);
+      --cream: #FAF7F2; --warm-white: #FFFFFF; --ink: #1C1A17; --ink-light: #4A4640;
+      --amber: #C8773A; --amber-light: #E8956A; --amber-pale: #FDF0E6;
+      --sage: #4A6741; --sage-light: #EBF2EA; --slate: #3A4A5C;
+      --border: #E8E2D9; --shadow: 0 4px 24px rgba(28,26,23,0.08); --shadow-lg: 0 12px 48px rgba(28,26,23,0.12);
     }
     html { scroll-behavior: smooth; }
     body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--ink); line-height: 1.6; overflow-x: hidden; }
 
-    nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      background: rgba(250,247,242,0.92); backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border); padding: 0 2rem; height: 64px;
-      display: flex; align-items: center; justify-content: space-between;
-    }
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(250,247,242,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); padding: 0 2rem; height: 64px; display: flex; align-items: center; justify-content: space-between; }
     .nav-logo { font-family: 'Lora', serif; font-size: 1.35rem; font-weight: 600; color: var(--ink); letter-spacing: -0.02em; }
     .nav-logo span { color: var(--amber); }
     .nav-links { display: flex; gap: 2rem; align-items: center; list-style: none; }
     .nav-links a { font-size: 0.9rem; color: var(--ink-light); text-decoration: none; font-weight: 500; transition: color 0.2s; }
     .nav-links a:hover { color: var(--amber); }
-    .nav-cta { background: var(--amber) !important; color: white !important; padding: 0.5rem 1.25rem; border-radius: 100px; font-weight: 600 !important; transition: background 0.2s !important; }
+    .nav-cta { background: var(--amber) !important; color: white !important; padding: 0.5rem 1.25rem; border-radius: 100px; font-weight: 600 !important; }
     .nav-cta:hover { background: var(--amber-light) !important; }
 
-    .demo-banner {
-      position: fixed; top: 64px; left: 0; right: 0; z-index: 99;
-      background: var(--amber); color: white; text-align: center;
-      padding: 0.5rem 1rem; font-size: 0.82rem; font-weight: 600;
-      letter-spacing: 0.04em;
-    }
-    .demo-banner span { opacity: 0.8; font-weight: 400; }
-
-    .hero {
-      min-height: 100vh; display: flex; align-items: center;
-      padding: 9rem 2rem 5rem; position: relative; overflow: hidden;
-    }
-    .hero-bg {
-      position: absolute; inset: 0;
-      background: radial-gradient(ellipse 70% 60% at 80% 50%, rgba(200,119,58,0.08) 0%, transparent 70%),
-                  radial-gradient(ellipse 50% 40% at 20% 80%, rgba(74,103,65,0.06) 0%, transparent 60%);
-      pointer-events: none;
-    }
-    .hero-grid {
-      position: absolute; inset: 0;
-      background-image: linear-gradient(rgba(28,26,23,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(28,26,23,0.03) 1px, transparent 1px);
-      background-size: 48px 48px; pointer-events: none;
-    }
-    .hero-inner {
-      max-width: 1100px; margin: 0 auto; position: relative; z-index: 2;
-      display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center;
-    }
-    .hero-eyebrow {
-      display: inline-flex; align-items: center; gap: 0.5rem;
-      background: var(--amber-pale); border: 1px solid rgba(200,119,58,0.2);
-      color: var(--amber); font-size: 0.78rem; font-weight: 600;
-      letter-spacing: 0.08em; text-transform: uppercase;
-      padding: 0.35rem 0.85rem; border-radius: 100px; margin-bottom: 1.5rem;
-    }
-    .hero-eyebrow::before {
-      content: ''; width: 6px; height: 6px; background: var(--amber);
-      border-radius: 50%; animation: pulse 2s infinite;
-    }
+    .hero { min-height: 100vh; display: flex; align-items: center; padding: 7rem 2rem 5rem; position: relative; overflow: hidden; }
+    .hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 70% 60% at 80% 50%, rgba(200,119,58,0.08) 0%, transparent 70%), radial-gradient(ellipse 50% 40% at 20% 80%, rgba(74,103,65,0.06) 0%, transparent 60%); pointer-events: none; }
+    .hero-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(28,26,23,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(28,26,23,0.03) 1px, transparent 1px); background-size: 48px 48px; pointer-events: none; }
+    .hero-inner { max-width: 1100px; margin: 0 auto; position: relative; z-index: 2; display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+    .hero-eyebrow { display: inline-flex; align-items: center; gap: 0.5rem; background: var(--amber-pale); border: 1px solid rgba(200,119,58,0.2); color: var(--amber); font-size: 0.78rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.35rem 0.85rem; border-radius: 100px; margin-bottom: 1.5rem; }
+    .hero-eyebrow::before { content: ''; width: 6px; height: 6px; background: var(--amber); border-radius: 50%; animation: pulse 2s infinite; }
     @keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(0.8); } }
     .hero h1 { font-family: 'Lora', serif; font-size: clamp(2.4rem, 4vw, 3.4rem); font-weight: 600; line-height: 1.2; letter-spacing: -0.02em; color: var(--ink); margin-bottom: 1.25rem; }
     .hero h1 em { font-style: italic; color: var(--amber); }
     .hero-sub { font-size: 1.1rem; color: var(--ink-light); font-weight: 300; line-height: 1.7; margin-bottom: 2.25rem; max-width: 480px; }
     .hero-actions { display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; }
-    .btn-primary {
-      background: var(--amber); color: white; padding: 0.85rem 1.75rem;
-      border-radius: 100px; font-weight: 600; font-size: 0.95rem;
-      text-decoration: none; border: none; cursor: pointer; transition: all 0.2s;
-      display: inline-flex; align-items: center; gap: 0.5rem;
-      box-shadow: 0 4px 16px rgba(200,119,58,0.3);
-    }
+    .btn-primary { background: var(--amber); color: white; padding: 0.85rem 1.75rem; border-radius: 100px; font-weight: 600; font-size: 0.95rem; text-decoration: none; border: none; cursor: pointer; transition: all 0.2s; display: inline-flex; align-items: center; gap: 0.5rem; box-shadow: 0 4px 16px rgba(200,119,58,0.3); }
     .btn-primary:hover { background: var(--amber-light); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(200,119,58,0.4); }
     .btn-secondary { color: var(--ink); font-weight: 500; font-size: 0.95rem; text-decoration: none; display: inline-flex; align-items: center; gap: 0.4rem; transition: color 0.2s; }
     .btn-secondary:hover { color: var(--amber); }
@@ -109,13 +57,9 @@
     .msg.outgoing .msg-bubble { background: var(--amber); color: white; border-bottom-right-radius: 4px; }
     .msg-time { font-size: 0.68rem; color: #aaa; margin-top: 2px; white-space: nowrap; }
     .msg.outgoing .msg-time { text-align: right; }
-    .floating-badge {
-      position: absolute; background: white; border-radius: 12px; padding: 0.6rem 1rem;
-      box-shadow: var(--shadow); border: 1px solid var(--border); font-size: 0.78rem;
-      font-weight: 600; display: flex; align-items: center; gap: 0.4rem; animation: float 4s ease-in-out infinite;
-    }
+    .floating-badge { position: absolute; background: white; border-radius: 12px; padding: 0.6rem 1rem; box-shadow: var(--shadow); border: 1px solid var(--border); font-size: 0.78rem; font-weight: 600; display: flex; align-items: center; gap: 0.4rem; animation: float 4s ease-in-out infinite; }
     @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
-    .badge-1 { top: -18px; right: 24px; color: var(--sage); animation-delay: 0s; }
+    .badge-1 { top: -18px; right: 24px; color: var(--sage); }
     .badge-2 { bottom: -16px; left: 16px; color: var(--slate); animation-delay: 2s; }
 
     .stats-strip { background: var(--ink); padding: 2.5rem 2rem; }
@@ -147,12 +91,19 @@
     .step h3 { font-weight: 600; font-size: 0.95rem; margin-bottom: 0.6rem; }
     .step p { font-size: 0.82rem; color: var(--ink-light); line-height: 1.55; }
 
-    .use-case { background: var(--warm-white); }
-    .use-case-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; margin-top: 3.5rem; }
-    .use-case-list { list-style: none; margin-top: 1.5rem; }
-    .use-case-list li { display: flex; align-items: flex-start; gap: 0.75rem; padding: 0.75rem 0; border-bottom: 1px solid var(--border); font-size: 0.9rem; color: var(--ink-light); }
-    .use-case-list li:last-child { border-bottom: none; }
-    .use-case-list li::before { content: '→'; color: var(--amber); font-weight: 600; flex-shrink: 0; margin-top: 1px; }
+    .for { background: var(--warm-white); }
+    .verticals { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem; margin-top: 3.5rem; }
+    .vertical { border-radius: 20px; padding: 2rem 1.5rem; border: 1px solid var(--border); transition: all 0.25s; }
+    .vertical:hover { transform: translateY(-3px); box-shadow: var(--shadow); }
+    .vertical:nth-child(1) { background: var(--sage-light); border-color: rgba(74,103,65,0.15); }
+    .vertical:nth-child(2) { background: var(--amber-pale); border-color: rgba(200,119,58,0.15); }
+    .vertical:nth-child(3) { background: #EEF2F7; border-color: rgba(58,74,92,0.15); }
+    .vertical:nth-child(4) { background: #F4F0F8; border-color: rgba(100,80,140,0.15); }
+    .vertical-icon { font-size: 2rem; margin-bottom: 1rem; }
+    .vertical h3 { font-weight: 600; font-size: 0.95rem; margin-bottom: 0.5rem; }
+    .vertical ul { list-style: none; margin-top: 0.75rem; }
+    .vertical ul li { font-size: 0.8rem; color: var(--ink-light); padding: 0.2rem 0; display: flex; align-items: center; gap: 0.4rem; }
+    .vertical ul li::before { content: '→'; font-size: 0.7rem; color: var(--amber); flex-shrink: 0; }
 
     .privacy { background: var(--ink); color: white; }
     .privacy .section-title { color: white; }
@@ -178,8 +129,8 @@
     .contact-form { background: white; border: 1px solid var(--border); border-radius: 24px; padding: 2.5rem; box-shadow: var(--shadow); }
     .form-group { margin-bottom: 1.25rem; }
     .form-group label { display: block; font-size: 0.82rem; font-weight: 600; color: var(--ink); margin-bottom: 0.4rem; }
-    .form-group input, .form-group textarea { width: 100%; padding: 0.75rem 1rem; border: 1.5px solid var(--border); border-radius: 10px; font-family: 'DM Sans', sans-serif; font-size: 0.9rem; color: var(--ink); background: var(--cream); transition: border-color 0.2s; outline: none; resize: vertical; }
-    .form-group input:focus, .form-group textarea:focus { border-color: var(--amber); background: white; }
+    .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 0.75rem 1rem; border: 1.5px solid var(--border); border-radius: 10px; font-family: 'DM Sans', sans-serif; font-size: 0.9rem; color: var(--ink); background: var(--cream); transition: border-color 0.2s; outline: none; resize: vertical; }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--amber); background: white; }
     .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
     .contact-info { padding-top: 1rem; }
     .contact-info h3 { font-family: 'Lora', serif; font-size: 1.5rem; font-weight: 600; margin-bottom: 0.75rem; }
@@ -196,387 +147,205 @@
     .fade-in.visible { opacity: 1; transform: translateY(0); }
 
     @media (max-width: 900px) {
-      .hero-inner, .problem-grid, .use-case-grid, .privacy-grid, .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
-      .steps { grid-template-columns: repeat(2, 1fr); }
+      .hero-inner, .problem-grid, .privacy-grid, .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .steps, .verticals { grid-template-columns: repeat(2, 1fr); }
       .stats-inner { grid-template-columns: repeat(2, 1fr); }
       .hero-visual { display: none; }
       .form-row { grid-template-columns: 1fr; }
     }
     @media (max-width: 600px) {
-      .steps, .stats-inner { grid-template-columns: 1fr; }
+      .steps, .verticals, .stats-inner { grid-template-columns: 1fr; }
       .nav-links { display: none; }
     }
   </style>
 </head>
 <body>
 
-<script>
-  // ============================================================
-  //  COMMPILOT DEMO CONFIGURATION
-  //  Edit the values below to reconfigure the entire page.
-  //  No other changes needed.
-  // ============================================================
-  const CONFIG = {
+  <nav>
+    <div class="nav-logo">Comm<span>Pilot</span></div>
+    <ul class="nav-links">
+      <li><a href="#how">How It Works</a></li>
+      <li><a href="#for">Who It's For</a></li>
+      <li><a href="#privacy">Privacy</a></li>
+      <li><a href="#contact" class="nav-cta">Request a Demo</a></li>
+    </ul>
+  </nav>
 
-    // Organization details
-    orgName:        "Pike Career Center",
-    department:     "Cosmetology & Barbering Program",
-    directorName:   "Hillary Zortman",
-    directorTitle:  "Director of Vocational Training",
-    contactEmail:   "hzortman@pike.k12.in.us",
-    orgWebsite:     "commpilot.net",
-    city:           "Indianapolis, IN",
-
-    // Hero section
-    heroHeadline:   ["Clients always get", "an answer. Even when", "your chairs are"],
-    heroHeadlineEm: "full.",
-    heroSubtext:    "CommPilot monitors your program's inbox around the clock, handles appointment questions, pricing inquiries, and scheduling requests — so students can focus on their craft, not the phone.",
-
-    // Live chat demo in hero
-    chatTitle:      "Pike Cosmetology Program",
-    chatMsg1:       "Hi! I'm interested in booking a haircut with a student. How does that work and what does it cost?",
-    chatMsg1Time:   "Received 7:18 PM",
-    chatReply:      "Thanks for reaching out! Student haircuts are available Tuesday through Friday from 9am to 3pm. Services are priced at a significant discount — a standard cut is $8. You can walk in or call ahead to reserve a time. Our students are supervised by licensed instructors throughout every service.",
-    chatReplyTime:  "Sent 7:18 PM",
-    chatMsg2:       "Amazing, I had no idea this existed. I'll come by Thursday!",
-    chatMsg2Time:   "Received 7:19 PM",
-
-    // Use case section — questions this deployment handles
-    useCaseTitle:   "Built for vocational program communication.",
-    useCaseSub:     "CommPilot is pre-configured with the questions your program hears every day — answered consistently, accurately, and immediately.",
-    useCaseItems: [
-      "Appointment availability and walk-in hours",
-      "Student service pricing for haircuts, color, and nails",
-      "How to book with a specific student or instructor",
-      "Program enrollment and application process",
-      "What services are offered and by which skill level",
-      "Location, parking, and facility information",
-      "Gift certificate and payment questions",
-      "After-hours contact and next available opening"
-    ],
-
-    // Contact / demo request section
-    contactHeadline: "See CommPilot configured for your program.",
-    contactSub:      "We'll walk you through a live demo using your department's real inquiry types — so you see exactly what your clients and families would experience from day one.",
-
-    // Footer
-    vendorName:     "HarnessAI",
-    vendorUrl:      "https://harnessai.net",
-    vendorEmail:    "cary@harnessai.net",
-
-    // Demo banner text (shown at top — set to "" to hide)
-    demoBanner:     "LIVE DEMO — Configured for Pike Career Center Cosmetology & Barbering"
-  };
-  // ============================================================
-  //  END CONFIGURATION — do not edit below this line
-  // ============================================================
-</script>
-
-<!-- NAV -->
-<nav>
-  <div class="nav-logo">Comm<span>Pilot</span></div>
-  <ul class="nav-links">
-    <li><a href="#how">How It Works</a></li>
-    <li><a href="#usecase">Use Cases</a></li>
-    <li><a href="#privacy">Privacy</a></li>
-    <li><a href="#contact" class="nav-cta">Request a Demo</a></li>
-  </ul>
-</nav>
-
-<div class="demo-banner" id="demo-banner"></div>
-
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-grid"></div>
-  <div class="hero-inner">
-    <div class="hero-content">
-      <div class="hero-eyebrow">Intelligent Communication</div>
-      <h1 id="hero-headline"></h1>
-      <p class="hero-sub" id="hero-sub"></p>
-      <div class="hero-actions">
-        <a href="#contact" class="btn-primary">
-          Request a Demo
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </a>
-        <a href="#how" class="btn-secondary">
-          See how it works
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 2v10M2 7l5 5 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </a>
-      </div>
-    </div>
-
-    <div class="hero-visual">
-      <div class="floating-badge badge-1"><span>🟢</span> Responded in 43 seconds</div>
-      <div class="chat-card">
-        <div class="chat-header">
-          <div class="chat-avatar">✉️</div>
-          <div>
-            <div class="chat-title" id="chat-title"></div>
-            <div class="chat-status"><span class="chat-dot"></span>CommPilot Active</div>
-          </div>
-        </div>
-        <div class="msg incoming">
-          <div>
-            <div class="msg-bubble" id="chat-msg1"></div>
-            <div class="msg-time" id="chat-msg1-time"></div>
-          </div>
-        </div>
-        <div class="msg outgoing">
-          <div>
-            <div class="msg-bubble" id="chat-reply"></div>
-            <div class="msg-time" id="chat-reply-time"></div>
-          </div>
-        </div>
-        <div class="msg incoming">
-          <div>
-            <div class="msg-bubble" id="chat-msg2"></div>
-            <div class="msg-time" id="chat-msg2-time"></div>
-          </div>
-        </div>
-      </div>
-      <div class="floating-badge badge-2"><span>🔒</span> Processed locally — no data shared</div>
-    </div>
-  </div>
-</section>
-
-<!-- STATS -->
-<div class="stats-strip">
-  <div class="stats-inner">
-    <div class="fade-in"><span class="stat-num">24/7</span><span class="stat-label">Inbox monitoring, every day of the year</span></div>
-    <div class="fade-in"><span class="stat-num">&lt; 2 min</span><span class="stat-label">Average response time to incoming inquiries</span></div>
-    <div class="fade-in"><span class="stat-num">100%</span><span class="stat-label">Local processing — your data never leaves your infrastructure</span></div>
-    <div class="fade-in"><span class="stat-num">20+</span><span class="stat-label">Configurable response categories per deployment</span></div>
-  </div>
-</div>
-
-<!-- PROBLEM -->
-<section class="problem" id="problem">
-  <div class="section-inner">
-    <div class="problem-grid fade-in">
-      <div>
-        <p class="section-label">The Problem</p>
-        <h2 class="section-title">Every unanswered message is someone left waiting.</h2>
-        <p class="section-sub">The people who contact your organization reach out after hours, during busy periods, when they need answers right now. Your staff can't always be there. CommPilot can.</p>
-      </div>
-      <div class="problem-cards">
-        <div class="problem-card">
-          <div class="problem-icon">🌙</div>
-          <div>
-            <h4>After-hours silence</h4>
-            <p>Most inquiries arrive outside business hours. Without an intelligent response layer, people wait days for basic information they needed immediately.</p>
-          </div>
-        </div>
-        <div class="problem-card">
-          <div class="problem-icon">🔁</div>
-          <div>
-            <h4>Repetitive questions, scarce time</h4>
-            <p>Staff spend hours answering the same questions over and over. CommPilot handles the predictable volume so your team focuses on what requires a human.</p>
-          </div>
-        </div>
-        <div class="problem-card">
-          <div class="problem-icon">📋</div>
-          <div>
-            <h4>No record, no accountability</h4>
-            <p>Without a complete audit trail, it's impossible to measure responsiveness or identify gaps. CommPilot logs every interaction automatically.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- HOW IT WORKS -->
-<section class="how" id="how">
-  <div class="section-inner">
-    <div class="fade-in" style="text-align:center;">
-      <p class="section-label">How It Works</p>
-      <h2 class="section-title">Four steps, fully automatic.</h2>
-      <p class="section-sub" style="margin:0 auto;">CommPilot runs quietly in the background — from inbox to response — without requiring any action from your staff.</p>
-    </div>
-    <div class="steps">
-      <div class="step fade-in"><div class="step-num">01</div><h3>Monitor</h3><p>CommPilot connects securely to your organization's inbox and watches for new inquiries continuously — day and night.</p></div>
-      <div class="step fade-in"><div class="step-num">02</div><h3>Analyze</h3><p>An AI model reads and understands the email, classifying the inquiry type and identifying exactly what the person needs.</p></div>
-      <div class="step fade-in"><div class="step-num">03</div><h3>Generate</h3><p>A second AI model crafts a warm, accurate, personalized response using your organization's approved information and voice.</p></div>
-      <div class="step fade-in"><div class="step-num">04</div><h3>Respond &amp; Log</h3><p>The reply goes out from your email address. The full interaction is logged for review, compliance, and improvement.</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- USE CASE -->
-<section class="use-case" id="usecase">
-  <div class="section-inner">
-    <div class="use-case-grid fade-in">
-      <div>
-        <p class="section-label">Your Use Case</p>
-        <h2 class="section-title" id="usecase-title"></h2>
-        <p class="section-sub" id="usecase-sub"></p>
-      </div>
-      <ul class="use-case-list" id="usecase-list"></ul>
-    </div>
-  </div>
-</section>
-
-<!-- PRIVACY -->
-<section class="privacy" id="privacy">
-  <div class="section-inner">
-    <div class="privacy-grid">
-      <div class="fade-in">
-        <p class="section-label">Privacy &amp; Control</p>
-        <h2 class="section-title">Your data never leaves your building.</h2>
-        <p class="section-sub">CommPilot runs entirely on your own infrastructure using local AI models. No email content, no personally identifiable information, and no organizational data is ever transmitted to a third-party AI service.</p>
-        <div class="privacy-points" style="margin-top:2rem;">
-          <div class="privacy-point"><div class="privacy-check">✓</div><div><h4>Local AI processing</h4><p>All classification and response generation happens on your servers — never on cloud AI platforms.</p></div></div>
-          <div class="privacy-point"><div class="privacy-check">✓</div><div><h4>Complete audit trail</h4><p>Every interaction is logged in a secure local database. Review or export any communication at any time.</p></div></div>
-          <div class="privacy-point"><div class="privacy-check">✓</div><div><h4>FERPA-compatible architecture</h4><p>Designed with educational data privacy in mind. Student and family data stays within your controlled environment.</p></div></div>
-        </div>
-      </div>
-      <div class="fade-in">
-        <div class="privacy-visual">
-          <div style="font-size:0.75rem; color:rgba(255,255,255,0.35); font-weight:600; letter-spacing:0.08em; text-transform:uppercase; margin-bottom:1rem;">Infrastructure Overview</div>
-          <div class="infra-row"><div class="infra-icon" style="background:rgba(74,103,65,0.2);">📥</div><div><div class="infra-label">Email Inbox</div><div class="infra-note">Your existing organizational email</div></div><span class="infra-status status-local">Monitored</span></div>
-          <div class="infra-row"><div class="infra-icon" style="background:rgba(200,119,58,0.15);">🤖</div><div><div class="infra-label">Classification Model</div><div class="infra-note">Runs on your local server</div></div><span class="infra-status status-local">Local</span></div>
-          <div class="infra-row"><div class="infra-icon" style="background:rgba(200,119,58,0.15);">✍️</div><div><div class="infra-label">Response Model</div><div class="infra-note">Runs on your local server</div></div><span class="infra-status status-local">Local</span></div>
-          <div class="infra-row"><div class="infra-icon" style="background:rgba(58,74,92,0.3);">🗄️</div><div><div class="infra-label">Interaction Log</div><div class="infra-note">Encrypted local database</div></div><span class="infra-status status-secure">Secure</span></div>
-          <div class="infra-row" style="margin-bottom:0;"><div class="infra-icon" style="background:rgba(100,80,140,0.2);">📤</div><div><div class="infra-label">Response Sent</div><div class="infra-note">From your email address</div></div><span class="infra-status status-secure">Controlled</span></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CONTACT -->
-<section class="contact" id="contact">
-  <div class="section-inner">
-    <div class="contact-grid">
-      <div class="contact-info fade-in">
-        <p class="section-label">Get in Touch</p>
-        <h3 id="contact-headline"></h3>
-        <p id="contact-sub"></p>
-        <div class="contact-detail"><div class="contact-detail-icon">✉️</div><span>Email: <a id="contact-email-link" href="#">—</a></span></div>
-        <div class="contact-detail"><div class="contact-detail-icon">🌐</div><span>Web: <a href="https://commpilot.net">commpilot.net</a></span></div>
-        <div class="contact-detail"><div class="contact-detail-icon">🏢</div><span id="contact-org-line"></span></div>
-      </div>
-      <div class="contact-form fade-in">
-        <h3 style="font-family:'Lora',serif; font-size:1.3rem; font-weight:600; margin-bottom:1.5rem;">Request a Demo</h3>
-        <form id="demo-form">
-          <div class="form-row">
-            <div class="form-group"><label>First Name</label><input type="text" id="f-first" /></div>
-            <div class="form-group"><label>Last Name</label><input type="text" id="f-last" /></div>
-          </div>
-          <div class="form-group"><label>Organization</label><input type="text" id="f-org" /></div>
-          <div class="form-group"><label>Your Role</label><input type="text" id="f-role" /></div>
-          <div class="form-group"><label>Email Address</label><input type="email" id="f-email" /></div>
-          <div class="form-group"><label>What would you like to improve?</label><textarea id="f-msg" rows="3"></textarea></div>
-          <button type="submit" class="btn-primary" style="width:100%; justify-content:center;">
-            Send Request
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-grid"></div>
+    <div class="hero-inner">
+      <div class="hero-content">
+        <div class="hero-eyebrow">Intelligent Communication</div>
+        <h1>Always there<br />for the people<br />who <em>need answers.</em></h1>
+        <p class="hero-sub">CommPilot monitors your organization's inbox around the clock, understands what people are asking, and responds with accuracy and care — so no one waits until Monday morning.</p>
+        <div class="hero-actions">
+          <a href="#contact" class="btn-primary">
+            Request a Demo
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </button>
-        </form>
+          </a>
+          <a href="#how" class="btn-secondary">
+            See how it works
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 2v10M2 7l5 5 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="floating-badge badge-1"><span>🟢</span> Responded in 51 seconds</div>
+        <div class="chat-card">
+          <div class="chat-header">
+            <div class="chat-avatar">✉️</div>
+            <div>
+              <div class="chat-title">Riverside Family Dental</div>
+              <div class="chat-status"><span class="chat-dot"></span>CommPilot Active</div>
+            </div>
+          </div>
+          <div class="msg incoming">
+            <div>
+              <div class="msg-bubble">Hi, do you accept new patients? We just moved to the area and need a dentist for the whole family.</div>
+              <div class="msg-time">Received 9:14 PM</div>
+            </div>
+          </div>
+          <div class="msg outgoing">
+            <div>
+              <div class="msg-bubble">Welcome to the area! Yes, we are accepting new patients of all ages including children. You can request an appointment online or call us at (317) 555-0182 during office hours. We accept most major insurance plans and offer flexible payment options.</div>
+              <div class="msg-time">Sent 9:14 PM</div>
+            </div>
+          </div>
+          <div class="msg incoming">
+            <div>
+              <div class="msg-bubble">Perfect — I'll call tomorrow morning. Thank you!</div>
+              <div class="msg-time">Received 9:15 PM</div>
+            </div>
+          </div>
+        </div>
+        <div class="floating-badge badge-2"><span>🔒</span> Processed locally — no data shared</div>
       </div>
     </div>
+  </section>
+
+  <div class="stats-strip">
+    <div class="stats-inner">
+      <div class="fade-in"><span class="stat-num">24/7</span><span class="stat-label">Inbox monitoring, every day of the year</span></div>
+      <div class="fade-in"><span class="stat-num">&lt; 2 min</span><span class="stat-label">Average response time to incoming inquiries</span></div>
+      <div class="fade-in"><span class="stat-num">100%</span><span class="stat-label">Local processing — your data never leaves your infrastructure</span></div>
+      <div class="fade-in"><span class="stat-num">20+</span><span class="stat-label">Configurable response categories per deployment</span></div>
+    </div>
   </div>
-</section>
 
-<footer>
-  <p><strong>CommPilot</strong> is a product of <a id="footer-vendor-link" href="#">HarnessAI</a> &nbsp;·&nbsp; <span id="footer-city"></span> &nbsp;·&nbsp; <a id="footer-email" href="#">—</a></p>
-  <p style="margin-top:0.5rem;">© 2026 HarnessAI. All rights reserved.</p>
-</footer>
+  <section class="problem" id="problem">
+    <div class="section-inner">
+      <div class="problem-grid fade-in">
+        <div>
+          <p class="section-label">The Problem</p>
+          <h2 class="section-title">Every unanswered email is someone left waiting.</h2>
+          <p class="section-sub">The people who contact your organization most often reach out after hours, during high-stress moments, when they need answers right away. Your staff can't always be there. CommPilot can.</p>
+        </div>
+        <div class="problem-cards">
+          <div class="problem-card"><div class="problem-icon">🌙</div><div><h4>After-hours silence</h4><p>Most inquiries arrive outside business hours. Without an intelligent response system, people wait days for basic information they needed immediately.</p></div></div>
+          <div class="problem-card"><div class="problem-icon">🔁</div><div><h4>Repetitive questions, scarce time</h4><p>Staff spend hours answering the same questions repeatedly. CommPilot handles the predictable volume so your team focuses on what truly requires a human touch.</p></div></div>
+          <div class="problem-card"><div class="problem-icon">📋</div><div><h4>No record, no accountability</h4><p>Without a complete audit trail, it's impossible to measure responsiveness or identify gaps. CommPilot logs every interaction automatically.</p></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<script>
-  // Apply CONFIG to page
-  document.addEventListener('DOMContentLoaded', () => {
-    const C = CONFIG;
+  <section class="how" id="how">
+    <div class="section-inner">
+      <div class="fade-in" style="text-align:center;">
+        <p class="section-label">How It Works</p>
+        <h2 class="section-title">Four steps, fully automatic.</h2>
+        <p class="section-sub" style="margin:0 auto;">CommPilot runs quietly in the background — from inbox to response — without requiring any action from your staff.</p>
+      </div>
+      <div class="steps">
+        <div class="step fade-in"><div class="step-num">01</div><h3>Monitor</h3><p>CommPilot connects securely to your organization's inbox and watches for new incoming inquiries continuously — day and night.</p></div>
+        <div class="step fade-in"><div class="step-num">02</div><h3>Analyze</h3><p>An AI model reads and understands the email, classifying the inquiry type and identifying exactly what the person needs to know.</p></div>
+        <div class="step fade-in"><div class="step-num">03</div><h3>Generate</h3><p>A second AI model crafts a warm, accurate, personalized response using your organization's approved information and voice.</p></div>
+        <div class="step fade-in"><div class="step-num">04</div><h3>Respond &amp; Log</h3><p>The reply goes out from your email address. The full interaction is logged for review, compliance, and continuous improvement.</p></div>
+      </div>
+    </div>
+  </section>
 
-    // Banner
-    const banner = document.getElementById('demo-banner');
-    if (C.demoBanner) {
-      banner.textContent = C.demoBanner;
-      banner.style.display = 'block';
-      document.querySelector('.hero').style.paddingTop = '10rem';
-    } else {
-      banner.style.display = 'none';
-    }
+  <section class="for" id="for">
+    <div class="section-inner">
+      <div class="fade-in">
+        <p class="section-label">Who It's For</p>
+        <h2 class="section-title">Built for organizations that serve people.</h2>
+        <p class="section-sub">CommPilot is configurable for any organization that receives a high volume of recurring inbound inquiries and values being genuinely responsive to the people it serves.</p>
+      </div>
+      <div class="verticals">
+        <div class="vertical fade-in"><div class="vertical-icon">🏫</div><h3>Schools &amp; Districts</h3><ul><li>Special education intake</li><li>Enrollment questions</li><li>Program information</li><li>Family services navigation</li></ul></div>
+        <div class="vertical fade-in"><div class="vertical-icon">🏥</div><h3>Medical &amp; Dental</h3><ul><li>Appointment information</li><li>Insurance &amp; billing questions</li><li>New patient intake</li><li>After-hours guidance</li></ul></div>
+        <div class="vertical fade-in"><div class="vertical-icon">🏛️</div><h3>Municipal Departments</h3><ul><li>Permit &amp; license inquiries</li><li>Service availability</li><li>Public records requests</li><li>Department routing</li></ul></div>
+        <div class="vertical fade-in"><div class="vertical-icon">💼</div><h3>Professional Services</h3><ul><li>Initial client intake</li><li>Service &amp; pricing questions</li><li>Scheduling inquiries</li><li>After-hours contact</li></ul></div>
+      </div>
+    </div>
+  </section>
 
-    // Page title
-    document.getElementById('page-title').textContent = `CommPilot — ${C.department} Demo`;
+  <section class="privacy" id="privacy">
+    <div class="section-inner">
+      <div class="privacy-grid">
+        <div class="fade-in">
+          <p class="section-label">Privacy &amp; Control</p>
+          <h2 class="section-title">Your data never leaves your building.</h2>
+          <p class="section-sub">CommPilot runs entirely on your own infrastructure using local AI models. No email content, no personally identifiable information, and no organizational data is ever transmitted to a third-party AI service.</p>
+          <div class="privacy-points" style="margin-top:2rem;">
+            <div class="privacy-point"><div class="privacy-check">✓</div><div><h4>Local AI processing</h4><p>All classification and response generation happens on your servers using proven open-source models — never on cloud AI platforms.</p></div></div>
+            <div class="privacy-point"><div class="privacy-check">✓</div><div><h4>Complete audit trail</h4><p>Every interaction is logged in a secure local database. Review, export, or report on any communication at any time.</p></div></div>
+            <div class="privacy-point"><div class="privacy-check">✓</div><div><h4>FERPA-compatible architecture</h4><p>Designed with educational data privacy in mind. Student and family information stays within your controlled environment.</p></div></div>
+          </div>
+        </div>
+        <div class="fade-in">
+          <div class="privacy-visual">
+            <div style="font-size:0.75rem; color:rgba(255,255,255,0.35); font-weight:600; letter-spacing:0.08em; text-transform:uppercase; margin-bottom:1rem;">Infrastructure Overview</div>
+            <div class="infra-row"><div class="infra-icon" style="background:rgba(74,103,65,0.2);">📥</div><div><div class="infra-label">Email Inbox</div><div class="infra-note">Your existing organizational email</div></div><span class="infra-status status-local">Monitored</span></div>
+            <div class="infra-row"><div class="infra-icon" style="background:rgba(200,119,58,0.15);">🤖</div><div><div class="infra-label">Classification Model</div><div class="infra-note">Runs on your local server</div></div><span class="infra-status status-local">Local</span></div>
+            <div class="infra-row"><div class="infra-icon" style="background:rgba(200,119,58,0.15);">✍️</div><div><div class="infra-label">Response Model</div><div class="infra-note">Runs on your local server</div></div><span class="infra-status status-local">Local</span></div>
+            <div class="infra-row"><div class="infra-icon" style="background:rgba(58,74,92,0.3);">🗄️</div><div><div class="infra-label">Interaction Log</div><div class="infra-note">Encrypted local database</div></div><span class="infra-status status-secure">Secure</span></div>
+            <div class="infra-row" style="margin-bottom:0;"><div class="infra-icon" style="background:rgba(100,80,140,0.2);">📤</div><div><div class="infra-label">Response Sent</div><div class="infra-note">From your email address</div></div><span class="infra-status status-secure">Controlled</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    // Hero headline
-    const h1 = document.getElementById('hero-headline');
-    h1.innerHTML = C.heroHeadline.join('<br />') + '<br /><em>' + C.heroHeadlineEm + '</em>';
+  <section class="contact" id="contact">
+    <div class="section-inner">
+      <div class="contact-grid">
+        <div class="contact-info fade-in">
+          <p class="section-label">Get in Touch</p>
+          <h3>Let's show you what CommPilot can do for your organization.</h3>
+          <p>We'll configure a live demo around your department's actual inquiry types — so you see exactly what your constituents would experience from day one.</p>
+          <div class="contact-detail"><div class="contact-detail-icon">✉️</div><span>Email: <a href="/cdn-cgi/l/email-protection#dbb8baa9a29bb3baa9b5bea8a8bab2f5b5beaf"><span class="__cf_email__" data-cfemail="5c3f3d2e251c343d2e32392f2f3d3572323928">[email&#160;protected]</span></a></span></div>
+          <div class="contact-detail"><div class="contact-detail-icon">🌐</div><span>Web: <a href="https://commpilot.net">commpilot.net</a></span></div>
+          <div class="contact-detail"><div class="contact-detail-icon">🏢</div><span>A HarnessAI product — Indianapolis, Indiana</span></div>
+        </div>
+        <div class="contact-form fade-in">
+          <h3 style="font-family:'Lora',serif; font-size:1.3rem; font-weight:600; margin-bottom:1.5rem;">Request a Demo</h3>
+          <form action="mailto:cary@harnessai.net" method="GET" enctype="text/plain">
+            <div class="form-row">
+              <div class="form-group"><label>First Name</label><input type="text" name="first_name" placeholder="Your first name" /></div>
+              <div class="form-group"><label>Last Name</label><input type="text" name="last_name" placeholder="Your last name" /></div>
+            </div>
+            <div class="form-group"><label>Organization</label><input type="text" name="organization" placeholder="Your organization" /></div>
+            <div class="form-group"><label>Your Role</label><input type="text" name="role" placeholder="Your title or department" /></div>
+            <div class="form-group"><label>Email Address</label><input type="email" name="email" placeholder="you@yourorg.org" /></div>
+            <div class="form-group"><label>What would you like to improve?</label><textarea name="message" rows="3" placeholder="Tell us about your communication challenges..."></textarea></div>
+            <button type="submit" class="btn-primary" style="width:100%; justify-content:center;">
+              Send Request
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    document.getElementById('hero-sub').textContent = C.heroSubtext;
+  <footer>
+    <p><strong>CommPilot</strong> is a product of <a href="https://harnessai.net">HarnessAI</a> &nbsp;·&nbsp; Indianapolis, Indiana &nbsp;·&nbsp; <a href="/cdn-cgi/l/email-protection#eb888a9992ab838a99858e98988a82c5858e9f"><span class="__cf_email__" data-cfemail="a1c2c0d3d8e1c9c0d3cfc4d2d2c0c88fcfc4d5">[email&#160;protected]</span></a></p>
+    <p style="margin-top:0.5rem;">© 2026 HarnessAI. All rights reserved.</p>
+  </footer>
 
-    // Chat
-    document.getElementById('chat-title').textContent = C.chatTitle;
-    document.getElementById('chat-msg1').textContent = C.chatMsg1;
-    document.getElementById('chat-msg1-time').textContent = C.chatMsg1Time;
-    document.getElementById('chat-reply').textContent = C.chatReply;
-    document.getElementById('chat-reply-time').textContent = C.chatReplyTime;
-    document.getElementById('chat-msg2').textContent = C.chatMsg2;
-    document.getElementById('chat-msg2-time').textContent = C.chatMsg2Time;
-
-    // Use case
-    document.getElementById('usecase-title').textContent = C.useCaseTitle;
-    document.getElementById('usecase-sub').textContent = C.useCaseSub;
-    const list = document.getElementById('usecase-list');
-    C.useCaseItems.forEach(item => {
-      const li = document.createElement('li');
-      li.textContent = item;
-      list.appendChild(li);
-    });
-
-    // Contact
-    document.getElementById('contact-headline').textContent = C.contactHeadline;
-    document.getElementById('contact-sub').textContent = C.contactSub;
-    const emailLink = document.getElementById('contact-email-link');
-    emailLink.textContent = C.vendorEmail;
-    emailLink.href = `mailto:${C.vendorEmail}`;
-    document.getElementById('contact-org-line').textContent = `A HarnessAI product — ${C.city}`;
-
-    // Form placeholders
-    document.getElementById('f-first').placeholder = C.directorName.split(' ')[0];
-    document.getElementById('f-last').placeholder = C.directorName.split(' ')[1] || '';
-    document.getElementById('f-org').placeholder = C.orgName;
-    document.getElementById('f-role').placeholder = C.directorTitle;
-    document.getElementById('f-email').placeholder = C.contactEmail;
-    document.getElementById('f-msg').placeholder = `We'd love to see CommPilot configured for our ${C.department}...`;
-
-    // Form submit
-    document.getElementById('demo-form').addEventListener('submit', (e) => {
-      e.preventDefault();
-      const first = document.getElementById('f-first').value;
-      const last = document.getElementById('f-last').value;
-      const org = document.getElementById('f-org').value;
-      const role = document.getElementById('f-role').value;
-      const email = document.getElementById('f-email').value;
-      const msg = document.getElementById('f-msg').value;
-      const subject = `CommPilot Demo Request — ${org}`;
-      const body = `Name: ${first} ${last}\nOrganization: ${org}\nRole: ${role}\nEmail: ${email}\n\n${msg}`;
-      window.location.href = `mailto:${C.vendorEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    });
-
-    // Footer
-    const vendorLink = document.getElementById('footer-vendor-link');
-    vendorLink.textContent = C.vendorName;
-    vendorLink.href = C.vendorUrl;
-    document.getElementById('footer-city').textContent = C.city;
-    const footerEmail = document.getElementById('footer-email');
-    footerEmail.textContent = C.vendorEmail;
-    footerEmail.href = `mailto:${C.vendorEmail}`;
-
-    // Fade in observer
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry, i) => {
-        if (entry.isIntersecting) {
-          setTimeout(() => entry.target.classList.add('visible'), i * 80);
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.12 });
-    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-  });
-</script>
-
-</body>
-</html>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    const observer = new Intersection
